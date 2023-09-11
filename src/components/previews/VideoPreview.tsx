@@ -173,12 +173,12 @@ const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             onClickCallback={() => window.open(`intent:${getBaseUrl()}${videoUrl}#Intent;package=com.mxtech.videoplayer.ad;S.title=${videoUrl};end`)}
             btnText="MX Player (Free)"
             btnImage="/players/mxplayer.png"
-            />
-          {/* <DownloadButton
+          />
+          <DownloadButton
             onClickCallback={() => window.open(`intent:${getBaseUrl()}${videoUrl}#Intent;package=com.mxtech.videoplayer.pro;S.title=${videoUrl};end`)}
             btnText="MX Player Pro"
-            btnImage="/players/mxplayerpro.png"
-            /> */}
+            btnImage="/players/mxplayer.png"
+          />
 
         </div>
       </DownloadBtnContainer>
