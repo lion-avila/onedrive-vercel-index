@@ -189,11 +189,11 @@ const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             btnText="MX Player (Free)"
             btnImage="/players/mxplayer.png"
           />
-          <DownloadButton
+          {/* <DownloadButton
             onClickCallback={() => openMXPlayer(false)} // For Pro version
             btnText="MX Player Pro"
             btnImage="/players/mxplayerpro.png"
-          />
+          /> */}
 
         </div>
       </DownloadBtnContainer>
