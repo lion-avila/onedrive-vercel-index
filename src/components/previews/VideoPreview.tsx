@@ -170,7 +170,7 @@ const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             btnImage="/players/nplayer.png"
           />
           <DownloadButton
-            onClickCallback={() => window.open(`intent:${videoUrl}#Intent;package=com.mxtech.videoplayer.ad;S.title=${getBaseUrl()}${videoUrl}`)}
+            onClickCallback={() => window.open(`intent:${getBaseUrl()}${videoUrl}#Intent;package=com.mxtech.videoplayer.ad;S.title=${videoUrl};end`)}
             btnText="MX Player (Free)"
             btnImage="/players/mxplayer.png"
             />
