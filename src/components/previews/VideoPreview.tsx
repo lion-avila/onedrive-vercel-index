@@ -170,12 +170,12 @@ const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             btnImage="/players/nplayer.png"
           />
           <DownloadButton
-            onClickCallback={() => window.open(`mxplayer://${getBaseUrl()}${videoUrl}`)}
+            onClickCallback={() => window.open(`nplayer-http://${window?mxtech.videoplayer.ad ?? ''}${videoUrl}`)}
             btnText="MXPlayer"
             btnImage="/players/mxplayer.png"
           />
           <DownloadButton
-            onClickCallback={() => window.open(`mxplayerpro://${getBaseUrl()}${videoUrl}`)}
+            onClickCallback={() => window.open(`nplayer-http://${window?mxtech.videoplayer.pro ?? ''}${videoUrl}`)}
             btnText="MXPlayer Pro"
             btnImage="/players/mxplayerpro.png"
           />
