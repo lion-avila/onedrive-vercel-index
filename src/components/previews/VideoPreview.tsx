@@ -73,7 +73,19 @@ const VideoPlayer: FC<{
   }
   return <Plyr id="plyr" source={plyrSource as Plyr.SourceInfo} options={plyrOptions} />
 }
-
+const openMXPlayer = () => {
+    const isFreeVersion = true; // Set to false for Pro version
+    const packageId = isFreeVersion ? "com.mxtech.videoplayer.ad" : "com.mxtech.videoplayer.pro";
+    const intentUrl = `intent:${videoUrl}#Intent;package=${packageId};end`;
+  
+    const isAndroid = /(android)/i.test(navigator.userAgent);
+  
+    if (isAndroid) {
+      window.location.href = intentUrl;
+    } else {
+      window.open(`https://play.google.com/store/apps/details?id=${packageId}`);
+    }
+  };
 const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
   const { asPath } = useRouter()
   const hashedToken = getStoredToken(asPath)
@@ -170,15 +182,15 @@ const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             btnImage="/players/nplayer.png"
           />
           <DownloadButton
-            onClickCallback={() => window.open(`intent:${videoUrl}#Intent;package=com.mxtech.videoplayer.ad;end`)}
+            onClickCallback={openMXPlayer}
             btnText="MX Player (Free)"
             btnImage="/players/mxplayer.png"
-          />
+        />
           <DownloadButton
-            onClickCallback={() => window.open(`intent:${videoUrl}#Intent;package=com.mxtech.videoplayer.pro;end`)}
+            onClickCallback={() => openMXPlayer(false)} // For Pro version
             btnText="MX Player Pro"
-            btnImage="/players/mxplayer.png"
-          />
+            btnImage="/players/mxplayerpro.png"
+        />
 
         </div>
       </DownloadBtnContainer>
