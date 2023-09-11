@@ -73,19 +73,22 @@ const VideoPlayer: FC<{
   }
   return <Plyr id="plyr" source={plyrSource as Plyr.SourceInfo} options={plyrOptions} />
 }
+const videoUrl = "https://lionavila.space/api/raw/?path=/Anime/Berserk%20(1997)/Berserk%20-%20E01%20-%20The%20Black%20Swordsman.mkv";
+
 const openMXPlayer = () => {
-    const isFreeVersion = true; // Set to false for Pro version
-    const packageId = isFreeVersion ? "com.mxtech.videoplayer.ad" : "com.mxtech.videoplayer.pro";
-    const intentUrl = `intent:${videoUrl}#Intent;package=${packageId};end`;
-  
-    const isAndroid = /(android)/i.test(navigator.userAgent);
-  
-    if (isAndroid) {
-      window.location.href = intentUrl;
-    } else {
-      window.open(`https://play.google.com/store/apps/details?id=${packageId}`);
-    }
-  };
+  const isFreeVersion = true; // Set to false for Pro version
+  const packageId = isFreeVersion ? "com.mxtech.videoplayer.ad" : "com.mxtech.videoplayer.pro";
+  const intentUrl = `intent:${videoUrl}#Intent;package=${packageId};end`;
+
+  const isAndroid = /(android)/i.test(navigator.userAgent);
+
+  if (isAndroid) {
+    window.location.href = intentUrl;
+  } else {
+    window.open(`https://play.google.com/store/apps/details?id=${packageId}`);
+  }
+};
+
 const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
   const { asPath } = useRouter()
   const hashedToken = getStoredToken(asPath)
@@ -185,12 +188,12 @@ const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             onClickCallback={openMXPlayer}
             btnText="MX Player (Free)"
             btnImage="/players/mxplayer.png"
-        />
+          />
           <DownloadButton
             onClickCallback={() => openMXPlayer(false)} // For Pro version
             btnText="MX Player Pro"
             btnImage="/players/mxplayerpro.png"
-        />
+          />
 
         </div>
       </DownloadBtnContainer>
